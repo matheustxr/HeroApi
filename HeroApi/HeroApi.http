@@ -1,0 +1,6 @@
+@HeroApi_HostAddress = http://localhost:5224
+
+GET {{HeroApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
