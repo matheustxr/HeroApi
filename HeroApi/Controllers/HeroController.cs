@@ -39,10 +39,18 @@ namespace HeroApi.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetHeroById(int id)
+        [HttpGet]
+        public async Task<IActionResult> GetAllHeroes()
         {
-            return Ok($"Endpoint para buscar herói com id {id} a ser implementado.");
+            var heroes = await _heroService.GetAllHeroesAsync();
+
+            if (!heroes.Any())
+            {
+                return NoContent();
+            }
+
+            return Ok(heroes);
         }
+
     }
 }
