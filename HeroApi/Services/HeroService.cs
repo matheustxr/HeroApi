@@ -152,5 +152,19 @@ namespace HeroApi.Services
             return await GetHeroByIdAsync(id);
         }
 
+        public async Task<bool> DeleteHeroAsync(int id)
+        {
+            var hero = await _context.Heroes.FindAsync(id);
+
+            if (hero is null)
+            {
+                return false;
+            }
+
+            _context.Heroes.Remove(hero);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

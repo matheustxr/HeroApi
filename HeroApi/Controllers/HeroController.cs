@@ -93,5 +93,17 @@ namespace HeroApi.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteHero(int id)
+        {
+            var result = await _heroService.DeleteHeroAsync(id);
+
+            if (!result)
+            {
+                return NotFound("Herói não encontrado para exclusão.");
+            }
+
+            return Ok("Herói excluído com sucesso.");
+        }
     }
 }

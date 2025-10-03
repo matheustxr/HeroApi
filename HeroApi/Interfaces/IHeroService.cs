@@ -8,5 +8,6 @@ namespace HeroApi.Interfaces
         Task<IEnumerable<ResponseHeroJson>> GetAllHeroesAsync();
         Task<ResponseHeroJson?> GetHeroByIdAsync(int id);
         Task<ResponseHeroJson?> UpdateHeroAsync(int id, RequestHeroJson request);
+        Task<bool> DeleteHeroAsync(int id);
     }
 }
