@@ -37,6 +37,18 @@ A API implementa todas as funcionalidades CRUD solicitadas para os super-heróis
    dotnet run
 4. A API estará em execução e pronta para receber requisições.
 
+## Seed de Dados
+Ao iniciar a aplicação, o banco de dados em memória é automaticamente preenchido com 5 superpoderes de exemplo, com IDs de 1 a 5. Isso facilita o uso da API sem precisar cadastrar poderes manualmente.
+
+| Id  | Super poder |
+| -------- | ----- | 
+| 1        | Super Força     | 
+| 2        | Invisibilidade     | 
+| 3        | Velocidade Extrema   | 
+| 4        | Telepatia     |
+| 5       | Controle do Tempo    | 
+
+
 ## Decisões de Arquitetura
 
 A arquitetura escolhida buscou um equilíbrio entre a **simplicidade**, adequada ao escopo do projeto, e a aplicação de **boas práticas** de desenvolvimento.
