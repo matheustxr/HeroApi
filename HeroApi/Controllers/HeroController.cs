@@ -65,5 +65,33 @@ namespace HeroApi.Controllers
             return Ok(hero);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateHero(int id, [FromBody] RequestHeroJson request)
+        {
+            try
+            {
+                var updatedHero = await _heroService.UpdateHeroAsync(id, request);
+
+                if (updatedHero is null)
+                {
+                    return NotFound("Herói não encontrado para atualização.");
+                }
+
+                return Ok(updatedHero);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Conflict(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ocorreu um erro interno: {ex.Message}");
+            }
+        }
+
     }
 }

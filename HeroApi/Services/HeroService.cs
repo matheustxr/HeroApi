@@ -113,5 +113,44 @@ namespace HeroApi.Services
             };
         }
         
+        public async Task<ResponseHeroJson?> UpdateHeroAsync(int id, RequestHeroJson request)
+        {
+            var hero = await _context.Heroes
+                .Include(h => h.HeroSuperpowers)
+                .FirstOrDefaultAsync(h => h.Id == id);
+
+            if (hero is null)
+            {
+                return null;
+            }
+
+            if (await _context.Heroes.AnyAsync(h => h.HeroName == request.HeroName && h.Id != id))
+            {
+                throw new InvalidOperationException("O nome de herói informado já está em uso por outro herói.");
+            }
+
+            var superpowerCount = await _context.Superpowers.CountAsync(s => request.SuperpowerIds.Contains(s.Id));
+            if (superpowerCount != request.SuperpowerIds.Count)
+            {
+                throw new ArgumentException("Um ou mais Ids de superpoderes são inválidos.");
+            }
+
+            hero.Name = request.Name;
+            hero.HeroName = request.HeroName;
+            hero.BirthDate = request.BirthDate;
+            hero.Height = request.Height;
+            hero.Weight = request.Weight;
+
+            hero.HeroSuperpowers.Clear();
+            foreach (var superpowerId in request.SuperpowerIds)
+            {
+                hero.HeroSuperpowers.Add(new HeroSuperpower { SuperpowerId = superpowerId });
+            }
+
+            await _context.SaveChangesAsync();
+
+            return await GetHeroByIdAsync(id);
+        }
+
     }
 }
