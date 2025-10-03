@@ -15,6 +15,10 @@ namespace HeroApi.Data
         {
             modelBuilder.Entity<HeroSuperpower>()
                 .HasKey(hs => new { hs.HeroId, hs.SuperpowerId });
+
+            modelBuilder.Entity<Hero>()
+                .HasIndex(h => h.HeroName)
+                .IsUnique();
         }
     }
 }
