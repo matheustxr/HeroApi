@@ -6,5 +6,6 @@ namespace HeroApi.Interfaces
     {
         Task<ResponseHeroJson?> CreateHeroAsync(RequestHeroJson request);
         Task<IEnumerable<ResponseHeroJson>> GetAllHeroesAsync();
+        Task<ResponseHeroJson?> GetHeroByIdAsync(int id);
     }
 }

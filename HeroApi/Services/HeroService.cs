@@ -88,5 +88,30 @@ namespace HeroApi.Services
             });
         }
 
+        public async Task<ResponseHeroJson?> GetHeroByIdAsync(int id)
+        {
+            var hero = await _context.Heroes
+                .Include(h => h.HeroSuperpowers)
+                .ThenInclude(hs => hs.Superpower)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(h => h.Id == id);
+
+            if (hero is null)
+            {
+                return null; 
+            }
+
+            return new ResponseHeroJson
+            {
+                Id = hero.Id,
+                Name = hero.Name,
+                HeroName = hero.HeroName,
+                BirthDate = hero.BirthDate,
+                Height = hero.Height,
+                Weight = hero.Weight,
+                Superpowers = hero.HeroSuperpowers.Select(hs => hs.Superpower.SuperPower).ToList()
+            };
+        }
+        
     }
 }
