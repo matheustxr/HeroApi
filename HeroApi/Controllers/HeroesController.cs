@@ -6,11 +6,11 @@ namespace HeroApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HeroController : ControllerBase
+    public class HeroesController : ControllerBase
     {
         private readonly IHeroService _heroService;
 
-        public HeroController(IHeroService heroService)
+        public HeroesController(IHeroService heroService)
         {
             _heroService = heroService;
         }
