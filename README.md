@@ -12,7 +12,9 @@ O objetivo do projeto é desenvolver uma aplicação web completa, composta por 
 - **ASP.NET Core Web API**: Framework para a construção da API REST.
 - **Entity Framework Core 8**: ORM para acesso e manipulação de dados.
 - **Banco de Dados em Memória**: Provedor do EF Core utilizado para agilidade no desenvolvimento e testes, conforme permitido pelo desafio.
+- **xUnit & FluentAssertions**: Ferramentas utilizadas para a criação de testes unitários robustos e legíveis.
 - **Swagger (OpenAPI)**: Ferramenta para documentação e teste interativo dos endpoints da API.
+
 
 ## Funcionalidades Implementadas
 
@@ -23,6 +25,25 @@ A API implementa todas as funcionalidades CRUD solicitadas para os super-heróis
 - ✅ **Consulta por ID (Read)**: Busca e retorna um herói específico pelo seu ID.
 - ✅ **Atualização (Update)**: Altera os dados de um herói existente.
 - ✅ **Exclusão (Delete)**: Remove um herói da base de dados.Swagger.
+- ✅ **Listagem de Superpoderes**: Endpoint `GET` para retornar todos os superpoderes disponíveis, utilizado para popular o formulário no frontend.
+- ✅ **Documentação (Swagger)**: A API é totalmente documentada e pode ser testada interativamente via Swagger.
+
+## Testes Unitários
+
+Para garantir a qualidade e a corretude da lógica de negócio, o projeto inclui uma suíte completa de testes unitários, seguindo as práticas de Testabilidade e Manutenibilidade.
+
+Os testes foram desenvolvidos para a camada de **Services**, garantindo que todas as regras de negócio funcionem de forma isolada. As ferramentas utilizadas foram:
+- **xUnit**: Framework para a estruturação dos testes.
+- **EF Core In-Memory**: Para simular um banco de dados rápido e limpo para cada cenário de teste.
+- **FluentAssertions**: Para criar asserções (verificações) de forma mais clara e legível.
+
+A cobertura de testes inclui todos os cenários de sucesso e de falha especificados no desafio, como a criação de heróis, tratamento de IDs inválidos e a validação de nomes de herói duplicados.
+
+**Para executar os testes**, navegue até a pasta raiz da solução e utilize o comando:
+```sh
+dotnet test
+```
+
 
 ## Como Executar
 
