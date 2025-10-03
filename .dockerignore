@@ -1,0 +1,19 @@
+# Arquivos e pastas do .NET
+**/bin/
+**/obj/
+
+# Arquivos de configuração de ambiente local
+**/appsettings.Development.json
+
+# Arquivos do Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Arquivos do Git
+.git
+.gitignore
+
+# Arquivos do editor de código
+.vs/
+.vscode/
