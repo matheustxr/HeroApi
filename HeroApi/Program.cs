@@ -56,7 +56,7 @@ void SeedData(HeroContext context)
     if (!context.Superpowers.Any())
     {
         context.Superpowers.AddRange(
-            new Superpower { SuperPower = "Super Força", Description = "Capacidade de exercer força física acima do normal." },
+            new Superpower { SuperPower = "Super For\u00e7a", Description = "Capacidade de exercer força física acima do normal." },
             new Superpower { SuperPower = "Voo", Description = "Capacidade de voar sem auxílio mecânico." },
             new Superpower { SuperPower = "Invisibilidade", Description = "Capacidade de se tornar invisível a olho nu." },
             new Superpower { SuperPower = "Telepatia", Description = "Capacidade de ler mentes e projetar pensamentos." },
@@ -67,7 +67,7 @@ void SeedData(HeroContext context)
 
     if (!context.Heroes.Any())
     {
-        var superForca = context.Superpowers.Single(s => s.SuperPower == "Super Força");
+        var superForca = context.Superpowers.Single(s => s.SuperPower == "Super For\u00e7a");
         var voo = context.Superpowers.Single(s => s.SuperPower == "Voo");
         var superVelocidade = context.Superpowers.Single(s => s.SuperPower == "Super Velocidade");
         var telepatia = context.Superpowers.Single(s => s.SuperPower == "Telepatia");
