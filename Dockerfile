@@ -13,6 +13,11 @@ WORKDIR "/src/HeroApi"
 RUN dotnet publish "HeroApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
+
 WORKDIR /app
 
 COPY --from=build /app/publish .
